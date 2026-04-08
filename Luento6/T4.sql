@@ -1,0 +1,6 @@
+SELECT
+    group_id AS [group],
+    SUM(ects) AS [total ects]
+FROM Students
+GROUP BY group_id
+ORDER BY group_id ASC;

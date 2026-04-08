@@ -1,0 +1,56 @@
+try:
+    #code that might raise an exception
+    result = 10/0
+except ZeroDivisionError:
+    #code that handle the exception
+    print("cannot divide by zero")
+
+try:
+    # Code that might raise an exception
+    risky_operation()
+except:
+    # Catch all exceptions
+    print("An error occurred!")
+
+try:
+    risky_operation()
+except ValueError:
+    print("A ValueError occurred.")
+
+try:
+    file = open("example.txt", "r")
+    content = file.read()
+except IOError as e:
+    print(f"File error: {e}")
+    log_error(e)
+
+try:
+    risky_operation()
+except (ValueError, TypeError) as e:
+    print(f"A specific error occurred: {e}")
+
+try:
+    file = open("example.txt", "r")
+    content = file.read()
+except IOError as e:
+    print(f"File error: {e}")
+finally:
+    file.close()
+
+def divide(a, b):
+    try:
+        return a / b
+    except ZeroDivisionError as e:
+        print(f"Error: Cannot divide by zero. {e}")
+    except TypeError as e:
+        print(f"Error: Invalid input types. {e}")
+    except Exception as e:
+        print(f"Unexpected error: {e}")
+    finally:
+        print("Execution completed.")
+
+# Testing with different scenarios
+print(divide(10, 2))  # Should print 5.0
+print(divide(10, 0))  # Should print "Error: Cannot divide by zero."
+print(divide(10, 'a'))  # Should print "Error: Invalid input types."
+
